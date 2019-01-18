@@ -4,11 +4,11 @@
 
 var data = [
 	[//iPhone
-	  {axis:"Battery Life",value:1},
-	  {axis:"Brand",value:2},
-	  {axis:"Contract Cost",value:3},
-	  {axis:"Design And Quality",value:4},
-	  {axis:"Have Internet Connectivity",value:5},		
+	  {axis:"Impact",value:1},
+	  {axis:"Team",value:2},
+	  {axis:"Tech innovativeness",value:3},
+	  {axis:"Tech readiness",value:4},
+	  {axis:"Business",value:5},		
 	]
   ];
    
@@ -45,12 +45,14 @@ function RadarChart(id, data, options) {
 	var allAxis = (data[0].map(function(i, j){return i.axis})),	//Names of each axis
 		total = allAxis.length,					//The number of all axes
 		radius = Math.min(cfg.w/2, cfg.h/2), 	//Radius of the outermost circle
-		Format = d3.format('%'),			 	//Percentage formatting
+												//Math.min gives the smalles values of both
+
+		Format = d3.format(),			 		// formatting, have to be here!!!!
 		angleSlice = Math.PI * 2 / total;		//The width in radians of each "slice"
 	
 	//Scale for the radius
 	var rScale = d3.scale.linear()
-		.range([0, radius])
+		.range([0, radius]) //
 		.domain([0, maxValue]);
 		
 	/////////////////////////////////////////////////////////
